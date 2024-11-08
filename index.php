@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,6 +15,15 @@
         </form>
         <a href="register.php">Register a new login</a>
         <p>
-        <a href="games.php">UNA NCAA Championship Season</a>
+            <?php
+            if (isset($_SESSION['error'])) {
+                echo "<em>" . $_SESSION['error'] . "</em></br>";
+            }
+            if (isset($_SESSION['username'])) {
+                $username = $_SESSION['username'];
+                echo "Welcome $username!</br>";
+            }
+            ?>
+            <a href="games.php">UNA NCAA Championship Season</a>
     </body>
 </html>
